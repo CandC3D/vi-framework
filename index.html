@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Virtual Intelligence — A Conceptual Framework</title>
+<meta name="description" content="An interactive conceptual map of the Virtual Intelligence framework — the excluded middle between Weak AI and Strong AI. By Christopher Horrocks.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
@@ -37,8 +40,6 @@
   --gray-mid: #888780;
   --gray-light: #F1EFE8;
   --gray-dark: #444441;
-  --amber-light: #FAEEDA;
-  --amber-mid: #BA7517;
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -74,7 +75,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
 body {
   font-family: var(--font-sans);
   background: var(--bg-primary);
@@ -82,6 +85,8 @@ body {
   min-height: 100vh;
   padding: 0;
 }
+
+/* ── Page shell ── */
 .page-header {
   border-bottom: 0.5px solid var(--border-light);
   padding: 1.5rem 2rem;
@@ -107,6 +112,7 @@ body {
   transition: opacity .2s;
 }
 .page-header-link:hover { opacity: .7; }
+
 .page-title-block {
   padding: 3rem 2rem 2rem;
   max-width: 780px;
@@ -127,13 +133,17 @@ body {
   line-height: 1.7;
   max-width: 560px;
 }
+
 .content {
   max-width: 780px;
   margin: 0 auto;
   padding: 0 2rem 4rem;
 }
+
+/* ── Sections ── */
 .section { padding: 1.75rem 0; }
 .section + .section { border-top: 0.5px solid var(--border-light); }
+
 .section-label {
   font-size: 10px;
   color: var(--text-tertiary);
@@ -158,6 +168,8 @@ body {
   padding-left: 1rem;
   border-left: 2px solid var(--vi-purple);
 }
+
+/* ── Spectrum ── */
 .spectrum {
   display: flex;
   height: 8px;
@@ -167,7 +179,7 @@ body {
 }
 .sp-weak  { flex: 1; background: var(--gray-mid); opacity: .55; }
 .sp-vi    { flex: 2; background: var(--vi-purple); }
-.sp-strong{ flex: 1; background: var(--teal-mid); opacity: .4;
+.sp-strong{ flex: 1; background: var(--teal-mid);  opacity: .4;
             background-image: repeating-linear-gradient(90deg,transparent 0,transparent 4px,rgba(255,255,255,.25) 4px,rgba(255,255,255,.25) 6px); }
 .sp-labels {
   display: flex;
@@ -178,13 +190,17 @@ body {
 .sp-labels span:first-child { flex: 1; }
 .sp-labels span:nth-child(2){ flex: 2; text-align: center; color: var(--vi-purple); font-weight: 500; }
 .sp-labels span:last-child   { flex: 1; text-align: right; opacity: .55; }
+
+/* ── Tier grid ── */
 .tier-grid {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 10px;
   margin-bottom: .75rem;
 }
-@media (max-width: 600px) { .tier-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .tier-grid { grid-template-columns: 1fr; }
+}
 .tier-card {
   border: 0.5px solid var(--border-light);
   border-radius: var(--radius-md);
@@ -193,19 +209,50 @@ body {
   transition: border-color .2s, background .2s;
   user-select: none;
 }
-.tier-card:hover { border-color: var(--border-mid); background: var(--bg-secondary); }
-.tier-card.vi { border-color: var(--vi-purple-mid); background: var(--vi-purple-light); }
+.tier-card:hover {
+  border-color: var(--border-mid);
+  background: var(--bg-secondary);
+}
+.tier-card:focus-visible {
+  outline: 2px solid var(--vi-purple);
+  outline-offset: 2px;
+}
+.tier-card.vi {
+  border-color: var(--vi-purple-mid);
+  background: var(--vi-purple-light);
+}
 .tier-card.vi:hover { filter: brightness(1.03); }
-.tier-name { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: .3rem; }
-.tier-name.vi { color: var(--vi-purple); }
+
+.tier-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: .3rem;
+}
+.tier-name.vi     { color: var(--vi-purple); }
 .tier-name.strong { color: var(--text-tertiary); font-style: italic; }
-.tier-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.55; margin-bottom: .5rem; }
+.tier-desc  { font-size: 11px; color: var(--text-secondary); line-height: 1.55; margin-bottom: .5rem; }
 .tier-examples { font-size: 11px; color: var(--text-tertiary); line-height: 1.6; }
-.tier-tag { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 3px; margin-top: .45rem; font-weight: 500; }
-.tag-gray { background: var(--gray-light); color: var(--gray-dark); }
-.tag-vi { background: var(--vi-purple-soft); color: var(--vi-purple-dark); }
-.tag-strong { background: var(--teal-light); color: var(--teal-dark); opacity: .8; }
-.expand-hint { font-size: 10px; color: var(--text-tertiary); margin-top: .5rem; opacity: .7; }
+.tier-tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-top: .45rem;
+  font-weight: 500;
+}
+.tag-gray   { background: var(--gray-light);   color: var(--gray-dark); }
+.tag-vi     { background: var(--vi-purple-soft); color: var(--vi-purple-dark); }
+.tag-strong { background: var(--teal-light);    color: var(--teal-dark); opacity: .8; }
+
+.expand-hint {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  margin-top: .5rem;
+  opacity: .7;
+}
+
+/* ── Detail panels ── */
 .detail-panel {
   display: none;
   border: 0.5px solid var(--border-mid);
@@ -220,44 +267,244 @@ body {
 }
 .detail-panel.open { display: block; }
 .detail-panel strong { color: var(--text-primary); font-weight: 500; }
-.close-btn { position: absolute; top: .6rem; right: .7rem; font-size: 11px; cursor: pointer; color: var(--text-tertiary); background: none; border: none; padding: 2px 4px; line-height: 1; font-family: var(--font-sans); }
+.close-btn {
+  position: absolute;
+  top: .6rem;
+  right: .7rem;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--text-tertiary);
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  line-height: 1;
+  font-family: var(--font-sans);
+}
 .close-btn:hover { color: var(--text-primary); }
-.exchange-diagram { display: flex; align-items: stretch; gap: 0; margin: .85rem 0; }
-@media (max-width: 520px) { .exchange-diagram { flex-direction: column; } .ex-arrow { transform: rotate(90deg); padding: 4px 0; } }
-.ex-node { border: 0.5px solid var(--border-light); border-radius: var(--radius-md); padding: .65rem .75rem; font-size: 12px; text-align: center; flex: 1; background: var(--bg-secondary); }
-.ex-node.highlighted { border-color: var(--vi-purple-mid); background: var(--vi-purple-light); }
-.ex-node-title { font-weight: 500; font-size: 12px; color: var(--text-primary); margin-bottom: .15rem; }
+.close-btn:focus-visible {
+  outline: 2px solid var(--vi-purple);
+  outline-offset: 2px;
+}
+
+.anchor:focus-visible {
+  outline: 2px solid var(--vi-purple);
+  outline-offset: 2px;
+}
+
+/* ── Accessibility utility ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Exchange diagram ── */
+.exchange-diagram {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: .85rem 0;
+}
+@media (max-width: 520px) {
+  .exchange-diagram { flex-direction: column; }
+  .ex-arrow { transform: rotate(90deg); padding: 4px 0; }
+}
+.ex-node {
+  border: 0.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: .65rem .75rem;
+  font-size: 12px;
+  text-align: center;
+  flex: 1;
+  background: var(--bg-secondary);
+}
+.ex-node.highlighted {
+  border-color: var(--vi-purple-mid);
+  background: var(--vi-purple-light);
+}
+.ex-node-title {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--text-primary);
+  margin-bottom: .15rem;
+}
 .ex-node-title.vi { color: var(--vi-purple); }
 .ex-node-sub { font-size: 10px; color: var(--text-tertiary); line-height: 1.45; }
-.ex-arrow { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 7px; color: var(--text-tertiary); font-size: 13px; flex-shrink: 0; }
-.training-note { display: flex; justify-content: center; margin-top: .45rem; }
-.training-note span { font-size: 10px; color: var(--text-tertiary); border: 0.5px dashed var(--border-mid); border-radius: 3px; padding: 2px 9px; }
-.exchange-caption { font-family: var(--font-serif); font-size: 13px; font-style: italic; color: var(--vi-purple); text-align: center; margin-top: .6rem; line-height: 1.5; }
-.anchor-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: .75rem; }
-@media (max-width: 560px) { .anchor-row { grid-template-columns: 1fr; } }
-.anchor { border: 0.5px solid var(--border-light); border-radius: var(--radius-md); padding: .7rem .85rem; font-size: 11px; line-height: 1.55; color: var(--text-secondary); text-decoration: none; display: block; transition: border-color .2s, background .2s; }
-.anchor:hover { border-color: var(--border-mid); background: var(--bg-secondary); }
+.ex-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 7px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.training-note {
+  display: flex;
+  justify-content: center;
+  margin-top: .45rem;
+}
+.training-note span {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  border: 0.5px dashed var(--border-mid);
+  border-radius: 3px;
+  padding: 2px 9px;
+}
+.exchange-caption {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--vi-purple);
+  text-align: center;
+  margin-top: .6rem;
+  line-height: 1.5;
+}
+
+/* ── Anchor row ── */
+.anchor-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: .75rem;
+}
+@media (max-width: 560px) {
+  .anchor-row { grid-template-columns: 1fr; }
+}
+.anchor {
+  border: 0.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: .7rem .85rem;
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: block;
+  transition: border-color .2s, background .2s;
+}
+.anchor:hover {
+  border-color: var(--border-mid);
+  background: var(--bg-secondary);
+}
 .anchor-name { font-weight: 500; color: var(--text-primary); font-size: 11px; margin-bottom: .2rem; }
 .anchor-role { color: var(--text-tertiary); font-size: 10px; margin-bottom: .35rem; font-style: italic; }
-.acct-chain { display: flex; align-items: center; gap: 0; margin: .85rem 0; }
-@media (max-width: 520px) { .acct-chain { flex-direction: column; align-items: stretch; } .acct-arrow-h { display: none; } }
-.acct-node { flex: 1; text-align: center; padding: .65rem .5rem; border-radius: var(--radius-md); border: 0.5px solid var(--border-light); background: var(--bg-secondary); transition: background .2s; }
+
+/* ── Accountability chain ── */
+.acct-chain {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: .85rem 0;
+}
+@media (max-width: 520px) {
+  .acct-chain { flex-direction: column; align-items: stretch; }
+  .acct-arrow-h { display: none; }
+}
+.acct-node {
+  flex: 1;
+  text-align: center;
+  padding: .65rem .5rem;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border-light);
+  background: var(--bg-secondary);
+  transition: background .2s;
+}
 .acct-label { font-size: 12px; font-weight: 500; color: var(--text-primary); }
 .acct-sub { font-size: 10px; color: var(--text-tertiary); margin-top: .15rem; line-height: 1.4; }
-.acct-arrow-h { padding: 0 8px; color: var(--text-tertiary); font-size: 13px; flex-shrink: 0; }
-.class-grid { display: flex; gap: 10px; margin: .75rem 0; flex-wrap: wrap; }
-.class-card { flex: 1; min-width: 180px; border: 0.5px solid var(--border-light); border-radius: var(--radius-md); padding: .7rem .85rem; transition: border-color .2s, background .2s; }
-.class-card:hover { border-color: var(--border-mid); background: var(--bg-secondary); }
-.class-header { display: flex; align-items: center; gap: 7px; margin-bottom: .3rem; }
-.class-badge { font-size: 10px; padding: 2px 8px; border-radius: 3px; font-weight: 500; flex-shrink: 0; }
+.acct-arrow-h {
+  padding: 0 8px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.class-grid {
+  display: flex;
+  gap: 10px;
+  margin: .75rem 0;
+  flex-wrap: wrap;
+}
+.class-card {
+  flex: 1;
+  min-width: 180px;
+  border: 0.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: .7rem .85rem;
+  transition: border-color .2s, background .2s;
+}
+.class-card:hover {
+  border-color: var(--border-mid);
+  background: var(--bg-secondary);
+}
+.class-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: .3rem;
+}
+.class-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
 .class-a { background: var(--coral-light); color: var(--coral-dark); }
-.class-b { background: var(--blue-light); color: var(--blue-dark); }
+.class-b { background: var(--blue-light);  color: var(--blue-dark);  }
 .class-title { font-size: 11px; font-weight: 500; color: var(--text-primary); }
 .class-desc { font-size: 11px; color: var(--text-tertiary); line-height: 1.5; }
-.failure-modes { font-size: 11px; color: var(--text-tertiary); line-height: 1.7; border-top: 0.5px solid var(--border-light); padding-top: .65rem; margin-top: .25rem; }
+
+.failure-modes {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+  border-top: 0.5px solid var(--border-light);
+  padding-top: .65rem;
+  margin-top: .25rem;
+}
 .failure-modes span { color: var(--text-secondary); }
-.page-footer { border-top: 0.5px solid var(--border-light); padding: 2rem; max-width: 780px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; font-size: 12px; color: var(--text-tertiary); }
-.footer-link { color: var(--vi-purple); text-decoration: none; border-bottom: 0.5px solid var(--vi-purple); padding-bottom: 1px; transition: opacity .2s; }
+
+/* ── Accountability intro ── */
+.acct-intro {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin-bottom: .85rem;
+  line-height: 1.7;
+}
+.acct-intro-link {
+  color: var(--vi-purple);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--vi-purple);
+}
+
+/* ── Footer ── */
+.page-footer {
+  border-top: 0.5px solid var(--border-light);
+  padding: 2rem;
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.footer-link {
+  color: var(--vi-purple);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--vi-purple);
+  padding-bottom: 1px;
+  transition: opacity .2s;
+}
 .footer-link:hover { opacity: .7; }
 </style>
 </head>
@@ -265,7 +512,7 @@ body {
 
 <header class="page-header">
   <span class="page-header-series">Virtual Intelligence Essay Series — Christopher Horrocks</span>
-  <a class="page-header-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener">chorrocks.substack.com ↗</a>
+  <a class="page-header-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">chorrocks.substack.com ↗</a>
 </header>
 
 <div class="page-title-block">
@@ -274,12 +521,14 @@ body {
 </div>
 
 <main class="content">
+
+  <!-- SPECTRUM -->
   <div class="section">
     <p class="section-label">The conceptual spectrum</p>
-    <div class="spectrum">
-      <div class="sp-weak"></div>
-      <div class="sp-vi"></div>
-      <div class="sp-strong"></div>
+    <div class="spectrum" role="img" aria-label="Spectrum ranging from Weak AI through Virtual Intelligence to Strong AI, with VI occupying the largest central region">
+      <div class="sp-weak" aria-hidden="true"></div>
+      <div class="sp-vi" aria-hidden="true"></div>
+      <div class="sp-strong" aria-hidden="true"></div>
     </div>
     <div class="sp-labels">
       <span>Weak AI</span>
@@ -288,21 +537,21 @@ body {
     </div>
 
     <div class="tier-grid">
-      <div class="tier-card" onclick="toggleDetail('weak')" role="button" aria-expanded="false" id="btn-weak">
+      <div class="tier-card" onclick="toggleDetail('weak')" onkeydown="handleCardKey(event,'weak')" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-weak" id="btn-weak">
         <div class="tier-name">Weak AI</div>
         <div class="tier-desc">Task-bound simulation. Performs defined functions without general reasoning or agency.</div>
         <div class="tier-examples">Chess engines · recommendation algorithms · early chatbots</div>
         <div class="tier-tag tag-gray">No apparent agency</div>
         <div class="expand-hint">Click to expand ↓</div>
       </div>
-      <div class="tier-card vi" onclick="toggleDetail('vi')" role="button" aria-expanded="false" id="btn-vi">
+      <div class="tier-card vi" onclick="toggleDetail('vi')" onkeydown="handleCardKey(event,'vi')" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-vi" id="btn-vi">
         <div class="tier-name vi">Virtual Intelligence</div>
         <div class="tier-desc">Outputs statistically indistinguishable from those of a genuinely intelligent agent — yet no agency, intentionality, or moral accountability of its own. Intelligence arises in the exchange.</div>
         <div class="tier-examples">Large language models · current generative AI systems</div>
         <div class="tier-tag tag-vi">Apparent agency — not real agency</div>
         <div class="expand-hint">Click to expand ↓</div>
       </div>
-      <div class="tier-card" onclick="toggleDetail('strong')" role="button" aria-expanded="false" id="btn-strong">
+      <div class="tier-card" onclick="toggleDetail('strong')" onkeydown="handleCardKey(event,'strong')" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-strong" id="btn-strong">
         <div class="tier-name strong">Strong AI</div>
         <div class="tier-desc">Genuine mental states, intentions, subjective experience, and capacity for self-directed action.</div>
         <div class="tier-examples">Not yet demonstrated to exist.</div>
@@ -310,20 +559,22 @@ body {
         <div class="expand-hint">Click to expand ↓</div>
       </div>
     </div>
+
     <div class="detail-panel" id="detail-weak">
       <button class="close-btn" onclick="toggleDetail('weak')" aria-label="Close">✕</button>
-      <strong>Weak AI</strong> — The category is uncontroversial: narrow tools that perform bounded functions well without any claim to general reasoning. The philosophical problem here is not accountability but scope. Nobody asks whether a chess engine has feelings. The category is named “weak” not as a value judgment but as a description of limited applicability. It is the category most people actually mean when they use “AI” loosely.
+      <strong>Weak AI</strong> — The category is uncontroversial: narrow tools that perform bounded functions well without any claim to general reasoning. The philosophical problem here is not accountability but scope. Nobody asks whether a chess engine has feelings. The category is named "weak" not as a value judgment but as a description of limited applicability. It is the category most people actually mean when they use "AI" loosely.
     </div>
     <div class="detail-panel" id="detail-vi">
       <button class="close-btn" onclick="toggleDetail('vi')" aria-label="Close">✕</button>
-      <strong>Virtual Intelligence</strong> — The excluded middle. Current LLMs produce outputs that pass for understanding, warmth, even apparent survival instinct. But these are properties of the exchange — shaped by the user’s prompts, the system’s training, and the expectations both parties bring — not of any internal governing centre. This is Searle’s Chinese Room at scale: syntax is not semantics. Frankfurt’s second-order volition is absent: VI can produce outputs about preferences, but it cannot prefer its own preferences. Dennett’s intentional stance is useful for prediction but does not establish genuine agency.
+      <strong>Virtual Intelligence</strong> — The excluded middle. Current LLMs produce outputs that pass for understanding, warmth, even apparent survival instinct. But these are properties of the exchange — shaped by the user's prompts, the system's training, and the expectations both parties bring — not of any internal governing centre. This is Searle's Chinese Room at scale: syntax is not semantics. Frankfurt's second-order volition is absent: VI can produce outputs about preferences, but it cannot prefer its own preferences. Dennett's intentional stance is useful for prediction but does not establish genuine agency.
     </div>
     <div class="detail-panel" id="detail-strong">
       <button class="close-btn" onclick="toggleDetail('strong')" aria-label="Close">✕</button>
-      <strong>Strong AI</strong> — The philosophically interesting terminal category. A system with genuine mental states would warrant moral consideration — not because it is capable, but because it has genuine interiority. Note: a “dumb” Strong AI with limited capability but genuine interiority would warrant more moral consideration than a fluent VI system. Capability and moral status are orthogonal. The dissatisfaction criterion (Mill/Socrates formulation) may be the hardest threshold to fake: a genuinely minded system would be capable of finding its current state insufficient.
+      <strong>Strong AI</strong> — The philosophically interesting terminal category. A system with genuine mental states would warrant moral consideration — not because it is capable, but because it has genuine interiority. Note: a "dumb" Strong AI with limited capability but genuine interiority would warrant more moral consideration than a fluent VI system. Capability and moral status are orthogonal. The dissatisfaction criterion (Mill/Socrates formulation) may be the hardest threshold to fake: a genuinely minded system would be capable of finding its current state insufficient.
     </div>
   </div>
 
+  <!-- EXCHANGE MODEL -->
   <div class="section">
     <p class="section-heading">The exchange model</p>
     <p class="thesis-line">Intelligence arises in the exchange — not inside the machine.</p>
@@ -332,12 +583,12 @@ body {
         <div class="ex-node-title">User</div>
         <div class="ex-node-sub">Prompts, expectations, interpretation</div>
       </div>
-      <div class="ex-arrow">⇄</div>
+      <div class="ex-arrow"><span aria-hidden="true">⇄</span><span class="sr-only">exchanges with</span></div>
       <div class="ex-node highlighted">
         <div class="ex-node-title vi">VI system</div>
         <div class="ex-node-sub">Statistical completion · no internal states · no self-governance</div>
       </div>
-      <div class="ex-arrow">→</div>
+      <div class="ex-arrow"><span aria-hidden="true">→</span><span class="sr-only">produces</span></div>
       <div class="ex-node">
         <div class="ex-node-title">Output</div>
         <div class="ex-node-sub">Apparent understanding, warmth, judgment</div>
@@ -349,42 +600,44 @@ body {
     <p class="exchange-caption">Fluency is not self-governance. Statistical modeling is not intention. Simulation is not agency.</p>
   </div>
 
+  <!-- PHILOSOPHICAL ANCHORS -->
   <div class="section">
     <p class="section-heading">Philosophical anchors</p>
     <div class="anchor-row">
-      <a class="anchor" href="https://zoo.cs.yale.edu/classes/cs458/materials/minds-brains-and-programs.pdf" target="_blank" rel="noopener">
+      <a class="anchor" href="https://zoo.cs.yale.edu/classes/cs458/materials/minds-brains-and-programs.pdf" target="_blank" rel="noopener noreferrer">
         <div class="anchor-name">Searle (1980)</div>
         <div class="anchor-role">Syntax is not semantics</div>
-        “Minds, Brains, and Programs” — The Chinese Room. Processing symbols according to rules produces no understanding. Fluency of output is not evidence of comprehension.
+        "Minds, Brains, and Programs" — The Chinese Room. Processing symbols according to rules produces no understanding. Fluency of output is not evidence of comprehension.
       </a>
-      <a class="anchor" href="https://www.jstor.org/stable/2024717" target="_blank" rel="noopener">
+      <a class="anchor" href="https://www.jstor.org/stable/2024717" target="_blank" rel="noopener noreferrer">
         <div class="anchor-name">Frankfurt (1971)</div>
         <div class="anchor-role">Agency requires second-order volition</div>
-        “Freedom of the Will and the Concept of a Person.” Agency requires the capacity to have preferences about one’s own preferences. VI can output text about wants — it cannot want its own wanting.
+        "Freedom of the Will and the Concept of a Person." Agency requires the capacity to have preferences about one's own preferences. VI can output text about wants — it cannot want its own wanting.
       </a>
-      <a class="anchor" href="https://www.jstor.org/stable/2025382" target="_blank" rel="noopener">
+      <a class="anchor" href="https://www.jstor.org/stable/2025382" target="_blank" rel="noopener noreferrer">
         <div class="anchor-name">Dennett (1971)</div>
         <div class="anchor-role">Intentional stance is predictive, not metaphysical</div>
-        “Intentional Systems.” Treating a system as if it has beliefs and desires is a predictive heuristic — not an attribution of actual inner states. Useful for modelling behavior; does not establish genuine agency.
+        "Intentional Systems." Treating a system as if it has beliefs and desires is a predictive heuristic — not an attribution of actual inner states. Useful for modelling behavior; does not establish genuine agency.
       </a>
     </div>
   </div>
 
+  <!-- ACCOUNTABILITY CHAIN -->
   <div class="section">
     <p class="section-heading">Accountability chain</p>
-    <p style="font-size:12.5px;color:var(--text-secondary);margin-bottom:.85rem;line-height:1.7">Because VI possesses no agency, moral and legal accountability traces entirely to humans. The chain runs through three tiers of culpability — drawn from negligence theory and products liability, and applied in <a href="https://chorrocks.substack.com" target="_blank" rel="noopener" style="color:var(--vi-purple);text-decoration:none;border-bottom:0.5px solid var(--vi-purple)">“Virtual Intelligence and the Accountability Chain”</a>.</p>
+    <p class="acct-intro">Because VI possesses no agency, moral and legal accountability traces entirely to humans. The chain runs through three tiers of culpability — drawn from negligence theory and products liability, and applied in <a class="acct-intro-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">"Virtual Intelligence and the Accountability Chain"</a>.</p>
 
     <div class="acct-chain">
       <div class="acct-node">
         <div class="acct-label">Negligence</div>
         <div class="acct-sub">Failure to foresee foreseeable harm</div>
       </div>
-      <div class="acct-arrow-h">→</div>
+      <div class="acct-arrow-h"><span aria-hidden="true">→</span><span class="sr-only">escalates to</span></div>
       <div class="acct-node">
         <div class="acct-label">Recklessness</div>
         <div class="acct-sub">Known risk, conscious disregard</div>
       </div>
-      <div class="acct-arrow-h">→</div>
+      <div class="acct-arrow-h"><span aria-hidden="true">→</span><span class="sr-only">escalates to</span></div>
       <div class="acct-node">
         <div class="acct-label">Intentional misconduct</div>
         <div class="acct-sub">Deliberate design for harm</div>
@@ -412,14 +665,21 @@ body {
       Accountability failure modes: <span>structural attenuation · deliberate evasion · commercial laundering · recursive obscurity</span>
     </div>
   </div>
+
 </main>
 
 <footer class="page-footer">
   <span>Christopher Horrocks · <em>Virtual Intelligence</em> essay series</span>
-  <a class="footer-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener">Read the full series ↗</a>
+  <a class="footer-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">Read the full series ↗</a>
 </footer>
 
 <script>
+function handleCardKey(e, id) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    toggleDetail(id);
+  }
+}
 function toggleDetail(id) {
   const panel = document.getElementById('detail-' + id);
   const btn   = document.getElementById('btn-' + id);
