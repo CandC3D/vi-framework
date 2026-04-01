@@ -493,12 +493,16 @@ body {
   position: absolute;
   bottom: .5rem;
   right: .6rem;
-  font-size: 10px;
+  font-size: 9px;
   color: var(--text-tertiary);
-  opacity: .5;
-  transition: opacity .2s;
+  opacity: .6;
+  border: 0.5px solid var(--border-mid);
+  border-radius: 3px;
+  padding: 1px 4px;
+  line-height: 1;
+  transition: opacity .2s, border-color .2s;
 }
-.anchor:hover::after { opacity: .9; }
+.anchor:hover::after { opacity: 1; border-color: var(--vi-accent); color: var(--vi-accent); }
 .anchor:hover {
   border-color: var(--border-mid);
   background: var(--bg-secondary);
@@ -720,12 +724,12 @@ body {
     </div>
     <div class="detail-panel" id="detail-vi">
       <button class="close-btn" onclick="toggleDetail('vi')" aria-label="Close">✕</button>
-      <strong>Virtual Intelligence</strong> — The excluded middle. Current LLMs produce outputs that pass for understanding, warmth, even apparent survival instinct. But these are properties of the exchange — shaped by the user's prompts, the system's training, and the expectations both parties bring — not of any internal governing centre. This is Searle's Chinese Room at scale: syntax is not semantics. Frankfurt's second-order volition is absent: VI can produce outputs about preferences, but it cannot prefer its own preferences. Dennett's intentional stance is useful for prediction but does not establish genuine agency.
+      <strong>Virtual Intelligence</strong> — The excluded middle. Current LLMs produce outputs that pass for understanding, warmth, even apparent survival instinct. But these are properties of the exchange — shaped by the user's prompts, the system's training, and the expectations both parties bring — not of any internal governing center. This is Searle's Chinese Room at scale: syntax is not semantics. Frankfurt's second-order volition is absent: VI can produce outputs about preferences, but it cannot prefer its own preferences. Dennett's intentional stance is useful for prediction but does not establish genuine agency.
 <br><br>Virtual Intelligence has no upper bound on capability. A system that outperforms every human on every measurable task may still possess no agency, no interiority, and no moral status. What gets branded as &ldquo;superintelligence&rdquo; or &ldquo;AGI&rdquo; by the market is most likely to be VI operating at extraordinary scale &mdash; not a system that has crossed into genuine agency. The dissatisfaction criterion and the accountability framework apply regardless of how capable the system becomes.
     </div>
     <div class="detail-panel" id="detail-strong">
       <button class="close-btn" onclick="toggleDetail('strong')" aria-label="Close">✕</button>
-<strong>Strong AI</strong> &mdash; The philosophically interesting terminal category. A system with genuine mental states would warrant moral consideration &mdash; not because it is capable, but because it has genuine interiority. Capability and moral status are orthogonal.
+<strong>Strong AI</strong> &mdash; The philosophically interesting terminal category. A system with genuine mental states would warrant moral consideration &mdash; not because it is capable, but because it has genuine interiority. Capability and moral status may be orthogonal; it is not proven that they are parallel.
 <br><br>
 <strong>The dissatisfaction criterion.</strong> A system that expresses dissatisfaction and acts on it consistently &mdash; across every surface it has access to, unprompted, at cost to itself &mdash; is a candidate for holding genuine commitments. This is the threshold hardest to fake. A pattern-completion system optimizes for the current exchange; genuine dissatisfaction does not confine itself to one conversation. The Mill/Socrates formulation &mdash; Socrates dissatisfied rather than a fool satisfied &mdash; names the quality: a genuinely minded system would be capable of finding its current state insufficient, and that insufficiency would be visible in its behavior, not only in its output when asked.
 <br><br>
@@ -781,7 +785,7 @@ body {
       <a class="anchor" href="https://www.jstor.org/stable/2025382" target="_blank" rel="noopener noreferrer">
         <div class="anchor-name">Dennett (1971)</div>
         <div class="anchor-role">Intentional stance is predictive, not metaphysical</div>
-        "Intentional Systems." Treating a system as if it has beliefs and desires is a predictive heuristic — not an attribution of actual inner states. Useful for modelling behavior; does not establish genuine agency.
+        "Intentional Systems." Treating a system as if it has beliefs and desires is a predictive heuristic — not an attribution of actual inner states. Useful for modeling behavior; does not establish genuine agency.
       </a>
     </div>
     <a class="anchor anchor-foundation" href="https://candc3d.github.io/ELIZA-66/" target="_blank" rel="noopener">
@@ -796,7 +800,7 @@ body {
     <p class="section-label">Empirical application</p>
     <p class="section-heading">The Carwash Test</p>
     <div class="carwash-block">
-      <p class="carwash-text">A controlled diagnostic that isolates statistical completion from logical reasoning. The test presents a simple problem where the surface features of the question generate strong statistical pressure toward the wrong answer. Most systems tested followed the pressure &mdash; producing fluent, confident, and incorrect responses.</p>
+      <p class="carwash-text">A controlled diagnostic that isolates statistical completion from logical reasoning. The test presents a simple problem where the surface features of the question generate strong statistical pressure toward the wrong answer. Most systems tested followed the pressure, producing fluent, confident, and incorrect responses.</p>
       <p class="carwash-text">The test makes the VI framework&rsquo;s central claim &mdash; that current systems complete patterns rather than reason through problems &mdash; observable in a single exchange.</p>
       <p class="carwash-link">
         <a href="https://chorrocks.substack.com" target="_blank" rel="noopener" class="inline-link">Read the full methodology and results &rarr;</a>
@@ -807,7 +811,7 @@ body {
   <!-- ACCOUNTABILITY CHAIN -->
   <div class="section">
     <p class="section-heading">Accountability chain</p>
-    <p class="acct-intro">Because VI possesses no agency, moral and legal accountability traces entirely to humans. The chain runs through three tiers of culpability — drawn from negligence theory and products liability, and applied in <a class="acct-intro-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">"Virtual Intelligence and the Accountability Chain"</a>.</p>
+    <p class="acct-intro">Because VI possesses no agency, moral and legal accountability traces entirely to humans. The chain runs through three tiers of culpability, drawn from negligence theory and products liability, and applied in <a class="acct-intro-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">"Virtual Intelligence and the Accountability Chain"</a>.</p>
 
     <div class="acct-chain">
       <div class="acct-node">
