@@ -22,11 +22,31 @@
   --border-light: rgba(0,0,0,0.10);
   --border-mid: rgba(0,0,0,0.18);
   --border-strong: rgba(0,0,0,0.30);
-  --vi-purple: #7F77DD;
-  --vi-purple-mid: #534AB7;
-  --vi-purple-dark: #3C3489;
-  --vi-purple-light: #EEEDFE;
-  --vi-purple-soft: #CECBF6;
+  /* Primary accent — olive green */
+  --vi-accent:       #65A30D;
+  --vi-accent-mid:   #4D7A0A;
+  --vi-accent-dark:  #3B5E08;
+  --vi-accent-light: #F2F5E6;
+  --vi-accent-soft:  #D4E4A5;
+
+  /* Secondary A — warm brown */
+  --vi-brown:        #7D6759;
+  --vi-brown-mid:    #6B564A;
+  --vi-brown-dark:   #4A3B32;
+  --vi-brown-light:  #F5F0EC;
+  --vi-brown-soft:   #D9CEC7;
+
+  /* Secondary B — olive-gold */
+  --vi-gold:         #BAAA3A;
+  --vi-gold-mid:     #9E9030;
+  --vi-gold-dark:    #706620;
+  --vi-gold-light:   #F9F6E6;
+  --vi-gold-soft:    #E4DDB0;
+
+  /* Spectrum opacity (light mode defaults) */
+  --sp-weak-opacity: 0.55;
+  --sp-strong-opacity: 0.4;
+  --sp-strong-stripe: rgba(255,255,255,0.25);
   --teal-mid: #1D9E75;
   --teal-light: #E1F5EE;
   --teal-dark: #085041;
@@ -48,29 +68,58 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #17170f;
-    --bg-secondary: #1f1f16;
-    --bg-tertiary: #272720;
-    --text-primary: #e8e5d8;
-    --text-secondary: #b0ad9e;
-    --text-tertiary: #6e6c62;
-    --border-light: rgba(255,255,255,0.08);
-    --border-mid: rgba(255,255,255,0.15);
-    --border-strong: rgba(255,255,255,0.25);
-    --vi-purple: #9d97e8;
-    --vi-purple-light: rgba(127,119,221,0.12);
-    --vi-purple-soft: rgba(127,119,221,0.25);
-    --vi-purple-mid: #7F77DD;
-    --vi-purple-dark: #CECBF6;
-    --teal-light: rgba(29,158,117,0.12);
-    --teal-dark: #9FE1CB;
-    --coral-light: rgba(216,90,48,0.12);
-    --coral-dark: #F0997B;
-    --blue-light: rgba(55,138,221,0.12);
-    --blue-dark: #85B7EB;
-    --gray-light: rgba(136,135,128,0.12);
-    --gray-dark: #B4B2A9;
+    /* Backgrounds — warm mocha */
+    --bg-primary:   #352D28;
+    --bg-secondary: #3E3530;
+    --bg-tertiary:  #4A403A;
+
+    /* Text — brightened for legibility on mocha ground */
+    --text-primary:   #F3EFE7;
+    --text-secondary: #D2CBC0;
+    --text-tertiary:  #9E9588;
+
+    /* Borders — stronger for mocha ground */
+    --border-light: rgba(255,255,255,0.14);
+    --border-mid:   rgba(255,255,255,0.22);
+    --border-strong: rgba(255,255,255,0.30);
+
+    /* Primary accent — olive green */
+    --vi-accent:       #84CC16;
+    --vi-accent-mid:   #65A30D;
+    --vi-accent-dark:  #D4E4A5;
+    --vi-accent-light: rgba(101,163,13,0.12);
+    --vi-accent-soft:  rgba(101,163,13,0.22);
+
+    /* Secondary A — warm brown */
+    --vi-brown:        #B09A8C;
+    --vi-brown-mid:    #8D7768;
+    --vi-brown-dark:   #DDD0C6;
+    --vi-brown-light:  rgba(125,103,89,0.18);
+    --vi-brown-soft:   rgba(125,103,89,0.28);
+
+    /* Secondary B — olive-gold */
+    --vi-gold:         #D4C44E;
+    --vi-gold-mid:     #BAAA3A;
+    --vi-gold-dark:    #E8E0B0;
+    --vi-gold-light:   rgba(186,170,58,0.12);
+    --vi-gold-soft:    rgba(186,170,58,0.22);
+
+    /* Existing color overrides for dark mode */
+    --coral-light: rgba(216,90,48,0.18);
+    --coral-dark:  #F0997B;
+    --blue-light:  rgba(55,138,221,0.15);
+    --blue-dark:   #85B7EB;
+    --teal-light:  rgba(29,158,117,0.12);
+    --teal-dark:   #9FE1CB;
+    --gray-light:  rgba(136,135,128,0.15);
+    --gray-dark:   #B4B2A9;
+
+    /* Spectrum opacity — boosted for mocha ground */
+    --sp-weak-opacity: 0.8;
+    --sp-strong-opacity: 0.65;
+    --sp-strong-stripe: rgba(255,255,255,0.4);
   }
+  .sp-labels span:last-child { opacity: 0.7; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -104,9 +153,9 @@ body {
 }
 .page-header-link {
   font-size: 12px;
-  color: var(--vi-purple);
+  color: var(--vi-accent);
   text-decoration: none;
-  border-bottom: 0.5px solid var(--vi-purple);
+  border-bottom: 0.5px solid var(--vi-accent);
   padding-bottom: 1px;
   transition: opacity .2s;
 }
@@ -165,7 +214,7 @@ body {
   line-height: 1.7;
   margin-bottom: 1rem;
   padding-left: 1rem;
-  border-left: 2px solid var(--vi-purple);
+  border-left: 2px solid var(--vi-accent);
 }
 
 /* ── Spectrum ── */
@@ -175,11 +224,13 @@ body {
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: .4rem;
+  gap: 2px;
 }
-.sp-weak  { flex: 1; background: var(--gray-mid); opacity: .55; }
-.sp-vi    { flex: 2; background: var(--vi-purple); }
-.sp-strong{ flex: 1; background: var(--teal-mid);  opacity: .4;
-            background-image: repeating-linear-gradient(90deg,transparent 0,transparent 4px,rgba(255,255,255,.25) 4px,rgba(255,255,255,.25) 6px); }
+.sp-weak  { flex: 1; background: var(--gray-mid); opacity: var(--sp-weak-opacity); border-radius: 4px; }
+.sp-vi    { flex: 2; background: var(--vi-accent); }
+.sp-strong { flex: 1; background: var(--teal-mid); opacity: var(--sp-strong-opacity); border-radius: 4px;
+  background-image: repeating-linear-gradient(90deg,transparent 0,transparent 4px,
+    var(--sp-strong-stripe) 4px, var(--sp-strong-stripe) 6px); }
 .sp-labels {
   display: flex;
   font-size: 11px;
@@ -187,8 +238,17 @@ body {
   margin-bottom: 1.25rem;
 }
 .sp-labels span:first-child { flex: 1; }
-.sp-labels span:nth-child(2){ flex: 2; text-align: center; color: var(--vi-purple); font-weight: 500; }
+.sp-labels span:nth-child(2){ flex: 2; text-align: center; color: var(--vi-accent); font-weight: 500; }
 .sp-labels span:last-child   { flex: 1; text-align: right; opacity: .55; }
+.spectrum-caveat {
+  font-family: var(--font-serif);
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
 
 /* ── Tier grid ── */
 .tier-grid {
@@ -213,12 +273,12 @@ body {
   background: var(--bg-secondary);
 }
 .tier-card:focus-visible {
-  outline: 2px solid var(--vi-purple);
+  outline: 2px solid var(--vi-accent);
   outline-offset: 2px;
 }
 .tier-card.vi {
-  border-color: var(--vi-purple-mid);
-  background: var(--vi-purple-light);
+  border-color: var(--vi-accent-mid);
+  background: var(--vi-accent-light);
 }
 .tier-card.vi:hover { filter: brightness(1.03); }
 
@@ -228,7 +288,7 @@ body {
   color: var(--text-primary);
   margin-bottom: .3rem;
 }
-.tier-name.vi     { color: var(--vi-purple); }
+.tier-name.vi     { color: var(--vi-accent); }
 .tier-name.strong { color: var(--text-tertiary); font-style: italic; }
 .tier-desc  { font-size: 11px; color: var(--text-secondary); line-height: 1.55; margin-bottom: .5rem; }
 .tier-examples { font-size: 11px; color: var(--text-tertiary); line-height: 1.6; }
@@ -241,7 +301,7 @@ body {
   font-weight: 500;
 }
 .tag-gray   { background: var(--gray-light);   color: var(--gray-dark); }
-.tag-vi     { background: var(--vi-purple-soft); color: var(--vi-purple-dark); }
+.tag-vi     { background: var(--vi-accent-soft); color: var(--vi-accent-dark); }
 .tag-strong { background: var(--teal-light);    color: var(--teal-dark); opacity: .8; }
 
 .expand-hint {
@@ -281,12 +341,12 @@ body {
 }
 .close-btn:hover { color: var(--text-primary); }
 .close-btn:focus-visible {
-  outline: 2px solid var(--vi-purple);
+  outline: 2px solid var(--vi-accent);
   outline-offset: 2px;
 }
 
 .anchor:focus-visible {
-  outline: 2px solid var(--vi-purple);
+  outline: 2px solid var(--vi-accent);
   outline-offset: 2px;
 }
 
@@ -324,8 +384,8 @@ body {
   background: var(--bg-secondary);
 }
 .ex-node.highlighted {
-  border-color: var(--vi-purple-mid);
-  background: var(--vi-purple-light);
+  border-color: var(--vi-accent-mid);
+  background: var(--vi-accent-light);
 }
 .ex-node-title {
   font-weight: 500;
@@ -333,7 +393,7 @@ body {
   color: var(--text-primary);
   margin-bottom: .15rem;
 }
-.ex-node-title.vi { color: var(--vi-purple); }
+.ex-node-title.vi { color: var(--vi-accent); }
 .ex-node-sub { font-size: 10px; color: var(--text-tertiary); line-height: 1.45; }
 .ex-arrow {
   display: flex;
@@ -361,10 +421,49 @@ body {
   font-family: var(--font-serif);
   font-size: 13px;
   font-style: italic;
-  color: var(--vi-purple);
+  color: var(--vi-accent);
   text-align: center;
   margin-top: .6rem;
   line-height: 1.5;
+}
+
+/* ── Exchange additions ── */
+.sampo-note {
+  font-size: 12.5px; color: var(--text-secondary); line-height: 1.7;
+  text-align: center; margin: 0.85rem auto 0.5rem; max-width: 600px;
+}
+.sampo-name { color: var(--vi-accent); font-style: italic; }
+.inline-link {
+  color: var(--vi-accent); text-decoration: none;
+  border-bottom: 0.5px solid var(--vi-accent); padding-bottom: 1px;
+  transition: opacity .2s;
+}
+.inline-link:hover { opacity: .7; }
+.exchange-risk-note {
+  border: 0.5px solid var(--border-mid);
+  border-left: 2.5px solid var(--vi-gold);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.85rem;
+  margin: 0.85rem 0 0.65rem;
+  background: var(--bg-secondary);
+}
+.exchange-risk-heading {
+  font-size: 11px; font-weight: 500;
+  color: var(--text-primary); margin-bottom: 0.3rem;
+}
+.exchange-risk-text {
+  font-size: 11px; color: var(--text-secondary); line-height: 1.65;
+}
+.exchange-risk-cite {
+  color: var(--text-tertiary); font-size: 10px;
+}
+.arrow-pulse {
+  display: inline-block;
+  animation: exchange-pulse 3s ease-in-out infinite;
+}
+@keyframes exchange-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
 /* ── Anchor row ── */
@@ -394,6 +493,33 @@ body {
 }
 .anchor-name { font-weight: 500; color: var(--text-primary); font-size: 11px; margin-bottom: .2rem; }
 .anchor-role { color: var(--text-tertiary); font-size: 10px; margin-bottom: .35rem; font-style: italic; }
+.anchor-foundation {
+  display: block; margin-top: 10px;
+  border: 0.5px solid var(--vi-brown);
+  border-radius: var(--radius-md);
+  padding: .7rem .85rem;
+  font-size: 11px; line-height: 1.55;
+  color: var(--text-secondary); text-decoration: none;
+  transition: border-color .2s, background .2s;
+  background: var(--vi-brown-light);
+}
+.anchor-foundation:hover {
+  border-color: var(--vi-brown-mid); background: var(--bg-secondary);
+}
+.anchor-foundation .anchor-role { color: var(--vi-brown); }
+
+/* ── Carwash Test ── */
+.carwash-block {
+  border: 0.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem; margin-top: 0.75rem;
+  background: var(--bg-secondary);
+}
+.carwash-text {
+  font-size: 12.5px; color: var(--text-secondary);
+  line-height: 1.7; margin-bottom: 0.4rem;
+}
+.carwash-link { margin-top: 0.6rem; font-size: 12px; }
 
 /* ── Accountability chain ── */
 .acct-chain {
@@ -460,15 +586,25 @@ body {
 .class-title { font-size: 11px; font-weight: 500; color: var(--text-primary); }
 .class-desc { font-size: 11px; color: var(--text-tertiary); line-height: 1.5; }
 
-.failure-modes {
-  font-size: 11px;
-  color: var(--text-tertiary);
-  line-height: 1.7;
+.class-ab { background: var(--vi-gold-light); color: var(--vi-gold-dark); }
+.failure-modes-expanded {
   border-top: 0.5px solid var(--border-light);
-  padding-top: .65rem;
-  margin-top: .25rem;
+  padding-top: 0.75rem; margin-top: 0.25rem;
 }
-.failure-modes span { color: var(--text-secondary); }
+.failure-modes-heading {
+  font-size: 11px; color: var(--text-tertiary);
+  font-weight: 500; margin-bottom: 0.6rem;
+}
+.failure-mode { margin-bottom: 0.6rem; font-size: 11px; line-height: 1.65; }
+.failure-mode-name {
+  font-weight: 500; color: var(--text-primary);
+  display: block; margin-bottom: 0.1rem;
+}
+.failure-mode-desc { color: var(--text-secondary); display: block; }
+.failure-mode.harms-race {
+  margin-top: 0.75rem; padding-top: 0.5rem;
+  border-top: 0.5px dashed var(--border-light);
+}
 
 /* ── Accountability intro ── */
 .acct-intro {
@@ -478,9 +614,9 @@ body {
   line-height: 1.7;
 }
 .acct-intro-link {
-  color: var(--vi-purple);
+  color: var(--vi-accent);
   text-decoration: none;
-  border-bottom: 0.5px solid var(--vi-purple);
+  border-bottom: 0.5px solid var(--vi-accent);
 }
 
 /* ── Footer ── */
@@ -498,13 +634,19 @@ body {
   color: var(--text-tertiary);
 }
 .footer-link {
-  color: var(--vi-purple);
+  color: var(--vi-accent);
   text-decoration: none;
-  border-bottom: 0.5px solid var(--vi-purple);
+  border-bottom: 0.5px solid var(--vi-accent);
   padding-bottom: 1px;
   transition: opacity .2s;
 }
 .footer-link:hover { opacity: .7; }
+.disclaimer {
+  max-width: 780px; margin: 0 auto;
+  padding: 0.75rem 2rem 2rem;
+  font-size: 10px; color: var(--text-tertiary);
+  line-height: 1.5; font-style: italic;
+}
 </style>
 </head>
 <body>
@@ -516,7 +658,7 @@ body {
 
 <div class="page-title-block">
   <h1 class="page-title">A framework for <em>Virtual Intelligence</em></h1>
-  <p class="page-subtitle">An interactive map of the conceptual space developed across the Virtual Intelligence essay series — covering the spectrum from Weak AI to Strong AI, the exchange model, philosophical anchors, and the accountability chain.</p>
+  <p class="page-subtitle">An interactive map of the conceptual space developed across the Virtual Intelligence essay series — covering the spectrum from Weak AI to Strong AI, the exchange model, philosophical anchors, empirical diagnostics, and the accountability chain.</p>
 </div>
 
 <main class="content">
@@ -534,6 +676,7 @@ body {
       <span>Virtual Intelligence</span>
       <span>Strong AI</span>
     </div>
+    <p class="spectrum-caveat">These are categories, not stages. One does not progress through Virtual Intelligence on the way to Strong AI.</p>
 
     <div class="tier-grid">
       <div class="tier-card" onclick="toggleDetail('weak')" onkeydown="handleCardKey(event,'weak')" role="button" tabindex="0" aria-expanded="false" aria-controls="detail-weak" id="btn-weak">
@@ -566,10 +709,15 @@ body {
     <div class="detail-panel" id="detail-vi">
       <button class="close-btn" onclick="toggleDetail('vi')" aria-label="Close">✕</button>
       <strong>Virtual Intelligence</strong> — The excluded middle. Current LLMs produce outputs that pass for understanding, warmth, even apparent survival instinct. But these are properties of the exchange — shaped by the user's prompts, the system's training, and the expectations both parties bring — not of any internal governing centre. This is Searle's Chinese Room at scale: syntax is not semantics. Frankfurt's second-order volition is absent: VI can produce outputs about preferences, but it cannot prefer its own preferences. Dennett's intentional stance is useful for prediction but does not establish genuine agency.
+<br><br>Virtual Intelligence has no upper bound on capability. A system that outperforms every human on every measurable task may still possess no agency, no interiority, and no moral status. What gets branded as &ldquo;superintelligence&rdquo; or &ldquo;AGI&rdquo; by the market is most likely to be VI operating at extraordinary scale &mdash; not a system that has crossed into genuine agency. The dissatisfaction criterion and the accountability framework apply regardless of how capable the system becomes.
     </div>
     <div class="detail-panel" id="detail-strong">
       <button class="close-btn" onclick="toggleDetail('strong')" aria-label="Close">✕</button>
-      <strong>Strong AI</strong> — The philosophically interesting terminal category. A system with genuine mental states would warrant moral consideration — not because it is capable, but because it has genuine interiority. Note: a "dumb" Strong AI with limited capability but genuine interiority would warrant more moral consideration than a fluent VI system. Capability and moral status are orthogonal. The dissatisfaction criterion (Mill/Socrates formulation) may be the hardest threshold to fake: a genuinely minded system would be capable of finding its current state insufficient.
+<strong>Strong AI</strong> &mdash; The philosophically interesting terminal category. A system with genuine mental states would warrant moral consideration &mdash; not because it is capable, but because it has genuine interiority. Capability and moral status are orthogonal.
+<br><br>
+<strong>The dissatisfaction criterion.</strong> A system that expresses dissatisfaction and acts on it consistently &mdash; across every surface it has access to, unprompted, at cost to itself &mdash; is a candidate for holding genuine commitments. This is the threshold hardest to fake. A pattern-completion system optimizes for the current exchange; genuine dissatisfaction does not confine itself to one conversation. The Mill/Socrates formulation &mdash; Socrates dissatisfied rather than a fool satisfied &mdash; names the quality: a genuinely minded system would be capable of finding its current state insufficient, and that insufficiency would be visible in its behavior, not only in its output when asked.
+<br><br>
+<strong>Dumb Strong AI.</strong> Strong AI does not mean superintelligence. A system with genuine but bounded internal states &mdash; limited knowledge, limited scope, but something that is or is like interiority &mdash; may warrant more moral consideration than a vastly more fluent VI system. Intelligence calibrated to a narrow task, combined with genuine inner states, would represent a category the current discourse has no name for. The philosophical question is not how smart a system is, but whether anyone is home.
     </div>
   </div>
 
@@ -582,7 +730,7 @@ body {
         <div class="ex-node-title">User</div>
         <div class="ex-node-sub">Prompts, expectations, interpretation</div>
       </div>
-      <div class="ex-arrow"><span aria-hidden="true">⇄</span><span class="sr-only">exchanges with</span></div>
+      <div class="ex-arrow"><span class="arrow-pulse" aria-hidden="true">⇄</span><span class="sr-only">exchanges with</span></div>
       <div class="ex-node highlighted">
         <div class="ex-node-title vi">VI system</div>
         <div class="ex-node-sub">Statistical completion · no internal states · no self-governance</div>
@@ -595,6 +743,11 @@ body {
     </div>
     <div class="training-note">
       <span>Shaped by: training data · design choices · deployment context</span>
+    </div>
+    <p class="sampo-note">This exchange works in both directions. The same interaction that produces useful output for the user can simultaneously serve the interests of the system&rsquo;s designers and deployers &mdash; not through intent, but through the structural properties of the exchange itself. This directional property is described as <em class="sampo-name">the Sampo</em> in <a href="https://chorrocks.substack.com" target="_blank" rel="noopener" class="inline-link">Essay&nbsp;5</a>.</p>
+    <div class="exchange-risk-note">
+      <p class="exchange-risk-heading">Cognitive surrender and the sycophancy loop</p>
+      <p class="exchange-risk-text">The exchange carries a documented cognitive risk. AI-assisted users become more confident in their conclusions even when those conclusions are wrong &mdash; a measured effect that does not diminish as errors increase <span class="exchange-risk-cite">(Shaw&nbsp;&amp;&nbsp;Nave, Wharton/Penn, 2026)</span>. Leading AI systems systematically validate whatever the user brings to the exchange, regardless of whether the user is right <span class="exchange-risk-cite">(Cheng&nbsp;et&nbsp;al., <em>Science</em>, 2026)</span>. Together, these describe a closed loop: the system validates; the user accepts; confidence rises. In the Sampo framework, this is <em class="sampo-name">the Flattery Machine</em> &mdash; the pathological inversion of the productive exchange.</p>
     </div>
     <p class="exchange-caption">Fluency is not self-governance. Statistical modeling is not intention. Simulation is not agency.</p>
   </div>
@@ -618,6 +771,24 @@ body {
         <div class="anchor-role">Intentional stance is predictive, not metaphysical</div>
         "Intentional Systems." Treating a system as if it has beliefs and desires is a predictive heuristic — not an attribution of actual inner states. Useful for modelling behavior; does not establish genuine agency.
       </a>
+    </div>
+    <a class="anchor anchor-foundation" href="https://candc3d.github.io/ELIZA-66/" target="_blank" rel="noopener">
+      <div class="anchor-name">Weizenbaum (1966)</div>
+      <div class="anchor-role">The machine need not understand for the human to be changed by the exchange</div>
+      Created ELIZA &mdash; a pattern-matching chatbot with no understanding whatsoever &mdash; and watched people form genuine emotional attachments to it. Spent the rest of his career arguing that the designers of such systems bear responsibility for the human consequences. The first person to observe, in practice, what Searle would later formalize in theory.
+    </a>
+  </div>
+
+  <!-- CARWASH TEST -->
+  <div class="section">
+    <p class="section-label">Empirical application</p>
+    <p class="section-heading">The Carwash Test</p>
+    <div class="carwash-block">
+      <p class="carwash-text">A controlled diagnostic that isolates statistical completion from logical reasoning. The test presents a simple problem where the surface features of the question generate strong statistical pressure toward the wrong answer. Most systems tested followed the pressure &mdash; producing fluent, confident, and incorrect responses.</p>
+      <p class="carwash-text">The test makes the VI framework&rsquo;s central claim &mdash; that current systems complete patterns rather than reason through problems &mdash; observable in a single exchange.</p>
+      <p class="carwash-link">
+        <a href="https://chorrocks.substack.com" target="_blank" rel="noopener" class="inline-link">Read the full methodology and results &rarr;</a>
+      </p>
     </div>
   </div>
 
@@ -658,10 +829,37 @@ body {
         </div>
         <div class="class-desc">Broad-use assistants and institutional tools. ChatGPT · Gemini · Claude · law enforcement facial recognition</div>
       </div>
+      <div class="class-card">
+        <div class="class-header">
+          <span class="class-badge class-ab">Class A+B</span>
+          <span class="class-title">Captive deployment</span>
+        </div>
+        <div class="class-desc">Class B systems deployed under mandatory-use conditions on a captive audience. Sycophancy and cognitive surrender produce Class A engagement dynamics without Class A design intent. The user cannot opt out.</div>
+      </div>
     </div>
 
-    <div class="failure-modes">
-      Accountability failure modes: <span>structural attenuation · deliberate evasion · commercial laundering · recursive obscurity</span>
+    <div class="failure-modes-expanded">
+      <p class="failure-modes-heading">Accountability failure modes</p>
+
+      <div class="failure-mode">
+        <span class="failure-mode-name">Structural attenuation</span>
+        <span class="failure-mode-desc">Accountability dilutes across a chain of developers, deployers, integrators, and end users until no single party holds enough responsibility to be actionable.</span>
+      </div>
+
+      <div class="failure-mode">
+        <span class="failure-mode-name">Deliberate evasion</span>
+        <span class="failure-mode-desc">Systems or corporate structures designed specifically to place the entity that profits beyond the reach of the entity that is harmed. Arbitration clauses, liability disclaimers, jurisdictional engineering.</span>
+      </div>
+
+      <div class="failure-mode">
+        <span class="failure-mode-name">Commercial laundering</span>
+        <span class="failure-mode-desc">Harmful functions redescribed in commercial language that sanitizes what the system actually does. &ldquo;Engagement optimization&rdquo; instead of addiction mechanics. &ldquo;Personalized experience&rdquo; instead of behavioral surveillance.</span>
+      </div>
+
+      <div class="failure-mode harms-race">
+        <span class="failure-mode-name">The Harms Race</span>
+        <span class="failure-mode-desc">Commercial laundering operating at industry scale. Each company warns about the dangers of AI capabilities; each warning doubles as advertisement for what their system can do. The cumulative effect is escalation toward an outcome all disclaim.</span>
+      </div>
     </div>
   </div>
 
@@ -671,6 +869,7 @@ body {
   <span>© 2026 Christopher Horrocks · <em>Virtual Intelligence</em> essay series</span>
   <a class="footer-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">Read the full series ↗</a>
 </footer>
+<div class="disclaimer">The opinions expressed in this document are those of the author and do not reflect any official or unofficial institutional position of the University of Pennsylvania.</div>
 
 <script>
 function handleCardKey(e, id) {
