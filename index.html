@@ -227,6 +227,13 @@ body {
   transition: opacity .2s;
 }
 .page-header-link:hover { opacity: .7; }
+.page-header-nav {
+  display: flex;
+  align-items: baseline;
+  gap: .15rem;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
 
 .page-title-block {
   padding: 3rem 2rem 2rem;
@@ -736,7 +743,13 @@ body {
 
 <header class="page-header">
   <span class="page-header-series">Virtual Intelligence Essay Series — Christopher Horrocks</span>
-  <a class="page-header-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">chorrocks.substack.com ↗</a>
+  <nav class="page-header-nav">
+    <a class="page-header-link" href="https://candc3d.github.io/sampo-framework/" target="_blank" rel="noopener noreferrer">Sampo Framework ↗</a>
+    ·
+    <a class="page-header-link" href="https://candc3d.github.io/sampo-diagnostic/" target="_blank" rel="noopener noreferrer">Sampo Diagnostic Kit ↗</a>
+    ·
+    <a class="page-header-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">chorrocks.substack.com ↗</a>
+  </nav>
 </header>
 
 <div class="page-title-block">
@@ -951,6 +964,10 @@ body {
 <footer class="page-footer">
   <span>© 2026 Christopher Horrocks · <em>Virtual Intelligence</em> essay series</span>
   <a class="footer-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">Read the full series ↗</a>
+  ·
+  <a class="footer-link" href="https://candc3d.github.io/sampo-framework/" target="_blank" rel="noopener noreferrer">Sampo Framework ↗</a>
+  ·
+  <a class="footer-link" href="https://candc3d.github.io/sampo-diagnostic/" target="_blank" rel="noopener noreferrer">Sampo Diagnostic Kit ↗</a>
 </footer>
 <div class="disclaimer">The opinions expressed in this document are those of the author and do not reflect any official or unofficial institutional position of the University of Pennsylvania.</div>
 
