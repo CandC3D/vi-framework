@@ -323,28 +323,6 @@ body {
 .sp-vi {
   flex: 2;
   background: var(--vi-accent);
-  position: relative;
-}
-.sp-vi::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  bottom: -5px;
-  left: 62%;
-  width: 1px;
-  background: var(--text-primary);
-  opacity: 0.65;
-}
-.sp-vi::after {
-  content: 'current LLMs';
-  position: absolute;
-  top: -15px;
-  left: 62%;
-  transform: translateX(-50%);
-  font-size: 9px;
-  letter-spacing: 0.04em;
-  color: var(--text-secondary);
-  white-space: nowrap;
 }
 .sp-strong {
   flex: 1;
@@ -1012,7 +990,7 @@ body {
         <span>Vast middle</span>
         <span>Hypothetical</span>
       </div>
-      <div class="spectrum" role="img" aria-label="Spectrum ranging from Weak AI through Virtual Intelligence to Strong AI, with VI occupying the largest central region and current LLMs positioned inside the VI band">
+      <div class="spectrum" role="img" aria-label="Spectrum ranging from Weak AI through Virtual Intelligence to Strong AI, with VI occupying the largest central region">
         <div class="sp-weak" aria-hidden="true"></div>
         <div class="sp-vi" aria-hidden="true"></div>
         <div class="sp-strong" aria-hidden="true"></div>
